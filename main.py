@@ -1,3 +1,4 @@
+name = []
 phone = []
 sunday = []
 monday = []
@@ -28,7 +29,7 @@ def get_first_day_hour(day_range: str):
 
 import csv
 
-with open("D:\\python\\random_test\\03.csv", "r", encoding="UTF-8") as csv_file:
+with open("D:\\python\\random_test\\04.csv", "r", encoding="UTF-8") as csv_file:
     csv_reader = csv.reader(csv_file)
 
     # These 3 skips are the first row and 2 tests
@@ -37,6 +38,7 @@ with open("D:\\python\\random_test\\03.csv", "r", encoding="UTF-8") as csv_file:
     next(csv_reader)
 
     for line in csv_reader:
+        name.append(line[1])
         phone.append(line[2])
         sunday.append(line[3])
         monday.append(line[4])
@@ -57,6 +59,6 @@ for i in range(0, number_of_students):
                 and get_last_day_hour(wednesday[i]) < get_first_day_hour(wednesday[j]) \
                 and get_last_day_hour(thursday[i]) < get_first_day_hour(thursday[j]) \
                 and get_last_day_hour(friday[i]) < get_first_day_hour(friday[j]):
-            print(phone[j])
-    print("End of matches for " + phone[i])
+            print(phone[j] + " " + name[j])
+    print("End of matches for " + phone[i] + " " + name[i])
     print("______________________________")
