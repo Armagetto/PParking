@@ -45,6 +45,8 @@ with open("D:\\python\\random_test\\02.csv", "r", encoding="UTF-8") as csv_file:
 
 number_of_students = len(phone)
 
+csv_file.close()
+
 for i in range(0, number_of_students):
     for j in range(0, number_of_students):
         if get_last_day_hour(sunday[i]) < get_first_day_hour(sunday[j]) \
@@ -56,3 +58,4 @@ for i in range(0, number_of_students):
             print(phone[j])
     print("End of matches for " + phone[i])
     print("______________________________")
+
