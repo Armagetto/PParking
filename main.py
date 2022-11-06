@@ -18,7 +18,7 @@ def get_last_day_hour(day_range: str):
 
 def get_first_day_hour(day_range: str):
     if day_range == '':
-        return 23
+        return 25
 
     last_time = (day_range.split("-")[0]).split(":")
 
