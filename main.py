@@ -20,6 +20,7 @@ def get_first_day_hour(day_range: str):
     if day_range == '':
         return 25
 
+
     last_time = (day_range.split("-")[0]).split(":")
 
     return int(last_time[0]) + int(last_time[1]) / 60
