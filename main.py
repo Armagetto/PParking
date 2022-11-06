@@ -1,5 +1,3 @@
-import time
-
 phone = []
 sunday = []
 monday = []
@@ -29,9 +27,12 @@ def get_first_day_hour(day_range: str):
 
 import csv
 
-with open("D:\\python\\random_test\\02.csv", "r", encoding="UTF-8") as csv_file:
+with open("D:\\python\\random_test\\03.csv", "r", encoding="UTF-8") as csv_file:
     csv_reader = csv.reader(csv_file)
 
+    # These 3 skips are the first row and 2 tests
+    next(csv_reader)
+    next(csv_reader)
     next(csv_reader)
 
     for line in csv_reader:
@@ -58,4 +59,3 @@ for i in range(0, number_of_students):
             print(phone[j])
     print("End of matches for " + phone[i])
     print("______________________________")
-
