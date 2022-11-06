@@ -1,5 +1,12 @@
 import time
-from datetime import datetime, timedelta
+
+phone = []
+sunday = []
+monday = []
+tuesday = []
+wednesday = []
+thursday = []
+friday = []
 
 
 def get_last_day_hour(day_range: str):
@@ -8,28 +15,16 @@ def get_last_day_hour(day_range: str):
 
     last_time = (day_range.split("-")[1]).split(":")
 
-    return int(last_time[0]) + int(last_time[1])/60
+    return int(last_time[0]) + int(last_time[1]) / 60
 
 
 def get_first_day_hour(day_range: str):
     if day_range == '':
-        return 25
+        return 23
 
     last_time = (day_range.split("-")[0]).split(":")
 
-    return int(last_time[0]) + int(last_time[1])/60
-
-
-class Parker:
-
-    def __init__(self, phone, sunday, monday, tuesday, wednesday, thursday, friday):
-        self.phone = phone
-        self.sunday = sunday
-        self.monday = monday
-        self.tuesday = tuesday
-        self.wednesday = wednesday
-        self.thursday = thursday
-        self.friday = friday
+    return int(last_time[0]) + int(last_time[1]) / 60
 
 
 import csv
@@ -37,20 +32,27 @@ import csv
 with open("D:\\python\\random_test\\02.csv", "r", encoding="UTF-8") as csv_file:
     csv_reader = csv.reader(csv_file)
 
-    next(csv_reader)  # ignor the first one
+    next(csv_reader)
 
     for line in csv_reader:
-        # get the hours for parker
-        parker = Parker(phone=str(line[2]), sunday=str(line[3]), monday=line[4], tuesday=line[5],
-                        wednesday=line[6], thursday=line[7], friday=line[8])
+        phone.append(line[2])
+        sunday.append(line[3])
+        monday.append(line[4])
+        tuesday.append(line[5])
+        wednesday.append(line[6])
+        thursday.append(line[7])
+        friday.append(line[8])
 
-        for day in csv_reader:
-            if get_last_day_hour(parker.sunday) or\
-                    get_last_day_hour(parker.monday) or\
-                    get_last_day_hour(parker.tuesday) or\
-                    get_last_day_hour(parker.wednesday) or\
-                    get_last_day_hour(parker.thursday) or\
-                    get_last_day_hour(parker.friday) < get_first_day_hour(day[3]):
-                print(day[2])
+number_of_students = len(phone)
 
-
+for i in range(0, number_of_students):
+    for j in range(0, number_of_students):
+        if get_last_day_hour(sunday[i]) < get_first_day_hour(sunday[j]) \
+                and get_last_day_hour(monday[i]) < get_first_day_hour(monday[j]) \
+                and get_last_day_hour(tuesday[i]) < get_first_day_hour(tuesday[j]) \
+                and get_last_day_hour(wednesday[i]) < get_first_day_hour(wednesday[j]) \
+                and get_last_day_hour(thursday[i]) < get_first_day_hour(thursday[j]) \
+                and get_last_day_hour(friday[i]) < get_first_day_hour(friday[j]):
+            print(phone[j])
+    print("End of matches for " + phone[i])
+    print("______________________________")
